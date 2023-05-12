@@ -4,10 +4,10 @@ import com.dalmia.demo.entities.Company;
 import lombok.Data;
 
 @Data
-public class CompanyResponse {
+public class CompanyResponse<T> {
 
     private HeaderResponse header;
-    private Company data;
+    private T data;
 
 
 }

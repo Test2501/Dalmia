@@ -1,6 +1,7 @@
 package com.dalmia.demo.exception;
 
 import com.dalmia.demo.payloads.ApiErrorResponse;
+import com.dalmia.demo.response.CompanyResponse;
 import com.dalmia.demo.response.HeaderResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

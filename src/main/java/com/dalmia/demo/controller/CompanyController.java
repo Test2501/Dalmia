@@ -1,7 +1,6 @@
 package com.dalmia.demo.controller;
 
 import com.dalmia.demo.entities.Company;
-import com.dalmia.demo.response.CompanyListResponse;
 import com.dalmia.demo.response.CompanyResponse;
 import com.dalmia.demo.response.HeaderResponse;
 import com.dalmia.demo.service.CompanyService;
@@ -9,7 +8,6 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,10 +29,10 @@ public class CompanyController {
     }
 
     @GetMapping
-    public ResponseEntity<CompanyListResponse> getAllCompanies() {
+    public ResponseEntity<CompanyResponse<List<Company>>> getAllCompanies() {
 
-        CompanyListResponse response = new CompanyListResponse();
-        HeaderResponse header = new HeaderResponse(101, "Response Successfull");
+        CompanyResponse<List<Company>> response = new CompanyResponse<>();
+        HeaderResponse header = new HeaderResponse(302, "Companies Details");
         response.setHeader(header);
 
         List<Company> allCompanies = service.getAllCompanies();
@@ -44,10 +42,10 @@ public class CompanyController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CompanyResponse> getCompanyById(@PathVariable int id) {
+    public ResponseEntity<CompanyResponse<Company>> getCompanyById(@PathVariable int id) {
 
-        CompanyResponse response = new CompanyResponse();
-        HeaderResponse header = new HeaderResponse(101, "Response Successfull");
+        CompanyResponse<Company> response = new CompanyResponse<>();
+        HeaderResponse header = new HeaderResponse(302, "Company Found");
         response.setHeader(header);
 
         Company company = service.getCompanyById(id);
